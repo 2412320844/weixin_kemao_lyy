@@ -17,19 +17,19 @@ public class MessageReceiverController {
 	
 	@GetMapping
 	public String echo(
-			@RequestParam("signature")String signature,
-			@RequestParam("timestamp")String timestamp,
-			@RequestParam("nonce")String nonce,
-			@RequestParam("echostr")String echostr
+			@RequestParam("signature") String signature,
+			@RequestParam("timestamp") String timestamp,
+			@RequestParam("nonce") String nonce,
+			@RequestParam("echostr") String echostr
 			) {
 		
 		return echostr;
 	}
 	@PostMapping
 	public String onMessage(
-			@RequestParam("signature")String signature,
-			@RequestParam("timestamp")String timestamp,
-			@RequestParam("nonce")String nonce,
+			@RequestParam("signature") String signature,
+			@RequestParam("timestamp") String timestamp,
+			@RequestParam("nonce") String nonce,
 			@RequestBody String xml) {
 		LOG.trace("收到的消息原文：\n{}\n------------------", xml);
 		return "success";
