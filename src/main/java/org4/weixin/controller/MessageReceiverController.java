@@ -93,8 +93,11 @@ public class MessageReceiverController {
 			@RequestBody String xml) {
 		LOG.debug("收到用户发送给公众号的信息: \n-----------------------------------------\n"
 				+ "{}\n-----------------------------------------\n", xml);
-		//获取消息类型
-		String type = xml.substring(0);
+		// 截取消息类型
+		// <MsgType><![CDATA[text]]></MsgType>
+		String type = xml.substring(xml.indexOf("<MsgType><![CDATA[") + 18);
+		type = type.substring(0, type.indexOf("]]></MsgType>"));
+		
 		Class<InMessage> cla = MessageTypeMapper.getClass(type);
 		//使用JAXB完成Java对象的操作
 		InMessage inMessage = JAXB.unmarshal(new StringReader(xml), cla);
