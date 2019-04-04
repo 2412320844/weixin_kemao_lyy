@@ -5,13 +5,7 @@ spring:
       username: kemao_1
       password: 1234
    
-   # 配置Redis的连接信息
-   redis:
-      # 这里换自己的IP
-      host: 120.78.3.239
-      port: 6379
-      database: 15
-
+ 
    
 
 # 修改运行时的端口号，因为一个端口号只能被一个人使用。
